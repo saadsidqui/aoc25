@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "es2024",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": ["ESNext"],
+        "types": ["node"],
+        "skipLibCheck": true,
+        "paths": {
+            "#/*": ["./src/*"],
+        },
+        "moduleResolution": "bundler",
+        "noEmit": true,
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowJs": false
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules/**"]
+}
