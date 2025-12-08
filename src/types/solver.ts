@@ -1,4 +1,4 @@
-export type Solver = () => void;
+export type Solver = () => void | Promise<void>;
 export interface SolverImport {
     solver: Solver;
 }
