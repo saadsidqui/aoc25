@@ -12,6 +12,10 @@ export class Point {
         return new Point(this.x + that.x, this.y + that.y);
     }
 
+    public addXY(x: number, y: number): Point {
+        return new Point(this.x + x, this.y + y);
+    }
+
     public clone(): Point { return new Point(this.x, this.y) };
 
     public distance(that: Point): Point {
