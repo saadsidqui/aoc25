@@ -1,3 +1,7 @@
+export type Numeric = number | bigint;
+export const isNumeric = (v: any): v is Numeric => {
+    return (typeof v === "number") || (typeof v === "bigint");
+};
 
 export const toInt = (val: string, radix?: number): number | null => {
     const result = parseInt(val, radix ?? 10);
