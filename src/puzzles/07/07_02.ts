@@ -11,8 +11,10 @@ const step = (beam: Point, grid: boolean[][], cache: Map<number, number>): numbe
 
     if (!isWithinGridBounds(beam, grid)) result = 1;
     else if (grid[beam.y][beam.x]) { // Meets a splitter ...
-        result = step(beam.addXY(-1, 1), grid, cache) + step(beam.addXY(1, 1), grid, cache);
-    } else result = step(beam.addXY(0, 1), grid, cache);
+        const left = step(beam.add({ x: -1, y: 1 }), grid, cache);
+        const right = step(beam.add({ x: 1, y: 1 }), grid, cache);
+        result = left + right;
+    } else result = step(beam.add({ x: 0, y: 1 }), grid, cache);
 
     cache.set(key, result);
     return result;

@@ -25,10 +25,10 @@ export const solver: Solver = () => {
             if (line[beam.x]) { // Meets a splitter ...
                 splits++;
 
-                candidates.push(beam.addXY(-1, 1))
-                candidates.push(beam.addXY(1, 1));
+                candidates.push(beam.add({ x: -1, y: 1 }))
+                candidates.push(beam.add({ x: 1, y: 1 }));
             } else {
-                candidates.push(beam.addXY(0, 1));
+                candidates.push(beam.add({ x: 0, y: 1 }));
             }
 
             for (const candidate of candidates) {
