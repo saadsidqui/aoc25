@@ -14,3 +14,15 @@ export const sha256 = (payload: crypto.BinaryLike): string =>
 
 export const wait = async (ms: number): Promise<void> =>
     new Promise(resolve => setTimeout(resolve, ms));
+
+interface Hashable<T> {
+    hash: T;
+};
+
+export const makePairKey = <T>(
+    a: Hashable<T>, b: Hashable<T>, separator: string = "-"
+): string => {
+    const keyA = a.hash;
+    const keyB = b.hash;
+    return keyA >= keyB ? `${keyA}-${keyB}` : `${keyB}${separator}${keyA}`;
+};

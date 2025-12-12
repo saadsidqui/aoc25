@@ -1,4 +1,4 @@
-import { toIntOrThrow } from "./number.ts";
+import { toIntOrThrow } from "#/utils/number.js";
 
 export interface Point3DLike {
     x: number;
@@ -10,6 +10,10 @@ export class Point3D implements Point3DLike {
     x: number = 0;
     y: number = 0;
     z: number = 0;
+
+    public get hash() {
+        return `${this.x},${this.y},${this.z}`;
+    }
 
     constructor(x: number, y: number, z: number) {
         this.set(x, y, z);
@@ -41,7 +45,6 @@ export class Point3D implements Point3DLike {
         return (this.x == that.x) && (this.y == that.y) && (this.z == that.z);
     }
 
-    public hash() { return `${this.x},${this.y},${this.z}`; }
     public static fromHash(hash: string): Point3D {
         const [x, y, z] = hash.split(",").map(c => toIntOrThrow(c));
         return new Point3D(x, y, z);
@@ -62,5 +65,5 @@ export class Point3D implements Point3DLike {
         return new Point3D(this.x - that.x, this.y - that.y, this.z - that.z);
     }
 
-    public toString() { return `${this.x},${this.y},${this.z}`; }
+    public toString() { return `Point(${this.x},${this.y},${this.z})`; }
 };

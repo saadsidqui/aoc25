@@ -4,7 +4,7 @@ import { Point } from "#/utils/Point.ts";
 import { isWithinGridBounds, parseInput } from "#/puzzles/07/common.ts";
 
 const step = (beam: Point, grid: boolean[][], cache: Map<number, number>): number => {
-    const key = beam.hash();
+    const key = beam.hash;
 
     let result = cache.get(key);
     if (result !== undefined) return result;

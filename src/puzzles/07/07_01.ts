@@ -32,7 +32,7 @@ export const solver: Solver = () => {
             }
 
             for (const candidate of candidates) {
-                const key = candidate.hash();
+                const key = candidate.hash;
                 if (
                     !isWithinGridBounds(candidate, mainfold.grid) ||
                     visited.has(key)

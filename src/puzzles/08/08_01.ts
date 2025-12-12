@@ -1,10 +1,10 @@
 import { Solver } from "#/types/solver.ts";
 import { shout, success } from "#/utils/console.ts";
 import { DisjointSet } from "#/utils/DisjointSet.ts";
-import { makeBoxPairKey } from "#/puzzles/08/common.ts";
 import { puzzleInput, readLines } from "#/utils/filesystem.ts";
 import { toIntOrThrow } from "#/utils/number.ts";
 import { Point3D } from "#/utils/Point3D.ts";
+import { makePairKey } from "#/utils/misc.ts";
 
 export const solver: Solver = () => {
     const input = readLines(puzzleInput(8), true).map(l => {
@@ -15,10 +15,10 @@ export const solver: Solver = () => {
     let distances = new Map<string, number>();
     const grid = new DisjointSet<string>();
     for (const a of input) {
-        grid.makeSet(a.hash());
+        grid.makeSet(a.hash);
         for (const b of input) {
             if (a.equals(b)) continue;
-            const key = makeBoxPairKey(a, b);
+            const key = makePairKey(a, b);
             distances.set(key, a.euclideanDistance(b));
         }
     }

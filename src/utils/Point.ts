@@ -1,4 +1,4 @@
-import { cantor } from "./number.js";
+import { cantor } from "#/utils/number.js";
 
 export interface PointLike {
     x: number;
@@ -7,6 +7,10 @@ export interface PointLike {
 export class Point implements PointLike {
     x: number = 0;
     y: number = 0;
+
+    public get hash() {
+        return cantor(this.x, this.y);
+    }
 
     constructor(x: number, y: number) {
         this.set(x, y);
@@ -30,15 +34,11 @@ export class Point implements PointLike {
     }
 
     public equals(that: PointLike): boolean { return (this.x == that.x) && (this.y == that.y); }
+    public colinear(that: PointLike): boolean {
+        return (this.x == that.x) || (this.y == that.y);
+    }
 
     public flip() { return new Point(this.y, this.x); }
-
-    public hash() { return cantor(this.x, this.y); }
-
-    public intersects(topLeft: PointLike, bottomRight: PointLike): boolean {
-        return (this.x >= topLeft.x) && (this.y >= topLeft.y) &&
-            (this.x <= bottomRight.x) && (this.y <= bottomRight.y);
-    }
 
     public magnitude(): number { return Math.sqrt((this.x * this.x) + (this.y * this.y)); }
 
@@ -52,5 +52,5 @@ export class Point implements PointLike {
         return new Point(this.x - that.x, this.y - that.y);
     }
 
-    public toString() { return `${this.x},${this.y}`; }
+    public toString() { return `Point(${this.x},${this.y})`; }
 };

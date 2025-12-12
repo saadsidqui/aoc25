@@ -19,6 +19,7 @@
         "commander": "^14.0.2",
         "eslint": "^9.39.1",
         "picocolors": "^1.1.1",
+        "pureimage": "^0.4.18",
         "tsx": "^4.21.0",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.48.0",
